@@ -1,5 +1,6 @@
 <<template>
     <div class="test">
-        <h3>this is a test</h3>
+        <h3>Welcome to Vue world</h3>
     </div>
 </template>
+
