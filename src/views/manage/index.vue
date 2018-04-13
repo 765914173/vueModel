@@ -1,23 +1,33 @@
 <template>
   <div class="manage tc">
-      <button>Add</button>
-      <div class="input-area">
-          <input type="text" placeholder="add admin">
-          <button>Done</button>
+      <button v-on:click="add">Add</button>
+      <div class="input-area" v-show="showAdd">
+          <input type="text" placeholder="add admin" v-model="nameValue">
+          <button v-on:click="addName">Done</button>
       </div>
       <table>
           <tr>
               <th>name</th>
               <th>operate</th>
           </tr>
-          <tr v-for="item in peoples">
-              <td>{{item.name}}</td>
+          <tr v-for="(item,index) in items">
               <td>
-                  <span>editor</span>
-                  <span>delete</span>
+                  {{item.name}}
+              </td>
+              <td v-bind:id="index">
+                  <span v-on:click="edit">editor</span>
+                  <span v-on:click="del">delete</span>
               </td>
           </tr>
       </table>
+      <!-- editor import -->
+      <div class="wrap" v-show="showEdit">
+          <div class="content">
+              <input type="text" placeholder="new name please" v-model="newName">
+              <button v-on:click="cancel">Cancel</button>
+              <button v-on:click="done">Done</button>
+          </div>
+      </div>
       <footer-nav></footer-nav>
   </div>
 </template>
@@ -42,6 +52,54 @@ import FooterNav from '../../components/footer'
 export default {
   components:{
       FooterNav
+  },
+  data(){
+      return{
+          isNowPage:true,
+          showAdd:false,
+          showEdit:false,
+          items:[{'name':'Jack'},{'name':'Sam'}],
+          nameValue:'',
+          newName:'',
+          editId:0
+      }
+  },
+  methods:{
+      add(){
+          this.showAdd=true
+      },
+      addName(){
+          var v=this.nameValue
+          if(v.trim()==""){
+              alert("name of admin")
+          }else{
+              var data = {}
+              data.name = v
+              this.items.push(data)
+          }
+      },
+      del(e){
+          var id = e.target.offsetParent.id
+          this.items.splice(id,1)
+      },
+      edit(e){
+           var id = e.target.offsetParent.id
+           this.showEdit=true
+           this.editId=id;
+           this.newName=this.items[id].name
+      },
+      cancel(){
+          this.showEdit=false;
+      },
+      done(){
+          var v = this.newName;
+          if(v.trim()==""){
+              alert("input name");
+          }else{
+              this.items[this.editId].name=this.newName;
+              this.showEdit=false;
+          }
+      }
   }
 }
 </script>

@@ -13,8 +13,7 @@ export default {
   },
   data(){
       return{
-          isNowPage:true,
-          peoples:[{'name':'Jack'},{'name':'Sam'}]
+          isNowPage:true
       }
   }
 }
