@@ -1,5 +1,8 @@
 <<template>
-    <div>
+    <div class="welcome">
+        <div class="img">
+            
+        </div>
         Welcome to manage system
         <footer-nav v-bind:class="{'isIndex':isNowPage}"></footer-nav>
     </div>
@@ -18,4 +21,9 @@ export default {
   }
 }
 </script>
+
+<style>
+    
+</style>
+
 

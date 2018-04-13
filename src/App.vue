@@ -20,8 +20,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  /* width: 300px;
+  width: 300px;
   height: 500px;
-  border: 1px solid black; */
+  border: 1px solid black;
+  margin: 0 auto;
+  padding-top: 20px;
 }
 </style>
