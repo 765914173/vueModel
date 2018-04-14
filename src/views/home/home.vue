@@ -29,9 +29,7 @@
 </template>
 
 <style>
-.top{
-    width: 100%;
-    height: 40px;
-}
+@import '../../assets/css/home.css';
+@import '../../assets/css/public.css';
 </style>
 
